@@ -109,6 +109,7 @@ GameObject:
   - 212: {fileID: 212000010989706492}
   - 114: {fileID: 114000012319647690}
   - 58: {fileID: 58000013714658704}
+  - 114: {fileID: 114000014209794948}
   m_Layer: 5
   m_Name: Pad Beat
   m_TagString: Untagged
@@ -212,6 +213,7 @@ GameObject:
   - 114: {fileID: 114000010524263196}
   - 58: {fileID: 58000012992386194}
   - 82: {fileID: 82000013360478690}
+  - 114: {fileID: 114000011770632500}
   m_Layer: 5
   m_Name: Output Audio
   m_TagString: Untagged
@@ -430,6 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab6a362740ed4e71a6a68eccdfc9e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 82000013360478690}
 --- !u!114 &114000010557462392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -544,6 +547,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114000011770632500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013737660164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9fcc0d95e83435b93a7e5b7cbc03fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012287447498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -584,8 +598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e84328e33b8f45e195a5659aa1e33c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 44eac334aeff142368068686935d2d99, type: 3}
-  output: {fileID: 0}
+  sample: {fileID: 8300000, guid: 44eac334aeff142368068686935d2d99, type: 3}
+  sourceElement: {fileID: 114000014209794948}
 --- !u!114 &114000012737972094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -721,6 +735,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114000014209794948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012224321822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2e88e3186974327b9e3534873b1935, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObjects:
+  - {fileID: 1000013737660164}
 --- !u!212 &212000010206818538
 SpriteRenderer:
   m_ObjectHideFlags: 1

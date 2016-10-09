@@ -18,24 +18,8 @@ public class TabButton : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (CheckClickOrTouch ()) {
+		if (Utilities.CheckMouseClick (rect, camera) || Utilities.CheckTouch (rect, camera)) {
 			onClick.Invoke ();
 		}
-	}
-
-	bool CheckClickOrTouch() {
-		var hasBeenClick = Input.GetMouseButtonDown (0) && RectTransformUtility.RectangleContainsScreenPoint (rect, Input.mousePosition, camera);
-		var hasBeenTouched = false;
-
-		if (Input.touchCount > 0) {
-			foreach(var touch in Input.touches) {
-				if (touch.phase == TouchPhase.Began && RectTransformUtility.RectangleContainsScreenPoint (rect, touch.position, camera)) {
-					hasBeenTouched = true;
-					break;
-				}
-			}
-		}
-
-		return hasBeenClick || hasBeenTouched;
 	}
 }

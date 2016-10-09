@@ -2,11 +2,19 @@
 using System.Collections;
 
 public interface IPlayableElement {
-	IEnumerator Play ();
+	void PlaySample ();
 }
 
 public interface ILoopableElement {
-	void Start ();
-	void Stop ();
-	void Pause ();
+	void StartLoop ();
+	void StopLoop ();
+	void PauseLoop ();
+}
+
+public interface ICanSendAudio {
+	AudioClip Spit();
+}
+
+public interface ICanReceiveAudio {
+	void Feed (AudioClip sample);
 }

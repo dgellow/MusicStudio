@@ -1,35 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PadBeat : MonoBehaviour {
+[RequireComponent(typeof(SourceElement))]
+public class PadBeat : MonoBehaviour, ICanSendAudio {
 
-	public AudioClip audioClip;
-	public OutputAudio output;
+	public AudioClip sample;
+	public ICanReceiveAudio linkTarget;
+	public SourceElement sourceElement;
 
-	Collider2D collider;
-	Camera camera;
+	Collider2D collider = new Collider2D();
+	Camera camera = new Camera();
 
 	// Use this for initialization
 	void Start () {
 		collider = GetComponent<CircleCollider2D> ();
 		camera = FindObjectOfType<Camera> ();
+		//sourceElement = GetComponent<SourceElement> ();
 	}
 	
-	void FixedUpdate() {
-		if (Input.touchCount > 0) {
-			foreach (var touch in Input.touches) {
-				if (touch.phase == TouchPhase.Began) {
-					var worldPosition = camera.ScreenToWorldPoint (new Vector3 (touch.position.x, touch.position.y));
-					if (collider.bounds.Contains (new Vector3 (worldPosition.x, worldPosition.y))) {
-						Play ();
-					}
-				}
-			}
-		}
+//	void FixedUpdate() {
+//		var touchesBegan = Utilities.CheckTouches (collider, camera, TouchPhase.Began);
+//		foreach (var _ in touchesBegan) {
+//			PlaySample();
+//		}
+//	}
+
+	#region ICanSendAudio implementation
+
+	public AudioClip Spit () {
+		return sample;
 	}
 
-	void Play() {
-		var audioSource = output.GetComponent<AudioSource> ();
-		audioSource.PlayOneShot (audioClip);
-	}
+	#endregion
 }

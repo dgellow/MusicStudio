@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OutputAudio : MonoBehaviour {
+[RequireComponent(typeof(AudioSource))]
+public class OutputAudio : MonoBehaviour, ICanReceiveAudio {
 
-	// Use this for initialization
-	void Start () {
+	public AudioSource source;
 	
+	#region ICanReceiveAudio implementation
+
+	public void Feed (AudioClip sample) {
+		source.PlayOneShot (sample);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+	#endregion
 }
