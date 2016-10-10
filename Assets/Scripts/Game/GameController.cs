@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour {
 		Destroy (generatorDragMarker);
 		generatorDragMarker = Instantiate (Resources.Load (prefabPath) as GameObject);
 		generatorDragMarker.transform.localScale = new Vector3 (1, 1, 1);
-		generatorDragMarker.transform.position = new Vector3(Utilities.mousePositionWorld.x, Utilities.mousePositionWorld.y, -10);
+		generatorDragMarker.transform.position = new Vector3(Utilities.mousePositionWorld.x, Utilities.mousePositionWorld.y, -2);
 		generatorDragPhase = GeneratorDragPhase.Begin;
 	}
 
@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour {
 			generatorDragMarker = Instantiate (Resources.Load (prefabPath) as GameObject);
 		}
 		generatorDragMarker.transform.localScale = new Vector3 (1, 1, 1);
-		generatorDragMarker.transform.position = new Vector3(Utilities.mousePositionWorld.x, Utilities.mousePositionWorld.y, -10);
+		generatorDragMarker.transform.position = new Vector3(Utilities.mousePositionWorld.x, Utilities.mousePositionWorld.y, -2);
 		generatorDragPhase = GeneratorDragPhase.OverScrollView;
 	}
 
@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour {
 			generatorDragMarker = Instantiate (Resources.Load (prefabPath) as GameObject);
 		}
 		generatorDragMarker.transform.localScale = new Vector3 (1, 1, 1);
-		generatorDragMarker.transform.position = new Vector3(Utilities.mousePositionWorld.x, Utilities.mousePositionWorld.y, -10);
+		generatorDragMarker.transform.position = new Vector3(Utilities.mousePositionWorld.x, Utilities.mousePositionWorld.y, -2);
 		generatorDragPhase = GeneratorDragPhase.OverBoard;
 	}
 
@@ -65,8 +65,13 @@ public class GameController : MonoBehaviour {
 		Destroy (generatorDragMarker);
 		var prefab = Instantiate (prefabToClone);
 		prefab.transform.parent = board.transform;
-		prefab.transform.localScale = new Vector3 (100, 100, 1);
-		prefab.transform.localPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10);
+		prefab.transform.localScale = new Vector3 (100, 100, 100);
+		var localPoint = new Vector2();
+		if (RectTransformUtility.ScreenPointToLocalPointInRectangle (board.rect, new Vector2 (Input.mousePosition.x, Input.mousePosition.y), Camera.main, out localPoint)) {
+			prefab.transform.localPosition = new Vector3(localPoint.x, localPoint.y, -10);
+		} else {
+			throw new UnityException ("Shouldn't happen. If it does I have no idea why");
+		}
 
 		generatorDragMarker = null;
 		generatorDragPhase = GeneratorDragPhase.EndOverBoard;
