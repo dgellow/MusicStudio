@@ -24,8 +24,9 @@ GameObject:
   - 58: {fileID: 58000011765202192}
   - 82: {fileID: 82000011876697226}
   - 114: {fileID: 114000010603722350}
+  - 114: {fileID: 114000013147196188}
   m_Layer: 5
-  m_Name: Output Audio
+  m_Name: Output Audio Drag Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,6 +201,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 82000011876697226}
+--- !u!114 &114000013147196188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012144320160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c87d0e6f187a41439d979892f878725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000010001396210
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -230,7 +242,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 23e7c0f79de0b40789e22298bb90c36d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.26666668}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &212000014047231314

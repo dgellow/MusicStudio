@@ -8,9 +8,8 @@ public class DebugCamera : MonoBehaviour {
 
 	Vector2 touchPosition;
 	GameObject[] touchMarkers;
-	Camera camera;
+	new Camera camera;
 
-	// Use this for initialization
 	void Start () {
 		camera = GetComponent<Camera> ();
 		touchMarkers = new GameObject[10];

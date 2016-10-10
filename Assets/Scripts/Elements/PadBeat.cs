@@ -8,8 +8,8 @@ public class PadBeat : MonoBehaviour, ICanSendAudio {
 	public ICanReceiveAudio linkTarget;
 
 	SourceElement sourceElement;
-	Collider2D collider = new Collider2D();
-	Camera camera = new Camera();
+	new Collider2D collider;
+	new Camera camera;
 
 	void Start () {
 		collider = GetComponent<CircleCollider2D> ();

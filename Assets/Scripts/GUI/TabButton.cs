@@ -10,7 +10,7 @@ public class TabButton : MonoBehaviour {
 	public UnityEvent onClick;
 
 	RectTransform rect;
-	Camera camera;
+	new Camera camera;
 
 	void Start() {
 		rect = GetComponent<RectTransform> ();

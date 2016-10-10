@@ -7,7 +7,7 @@ public class PadLoopButton : MonoBehaviour {
 
 	#if UNITY_IOS
 
-	Collider2D collider;
+	new Collider2D collider;
 
 	void Awake() {
 		collider = GetComponent<Collider2D> ();

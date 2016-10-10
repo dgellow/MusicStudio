@@ -2,9 +2,27 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum MousePhase {
+	Began,
+	Ended,
+	HoldDown
+}
+
 public class Utilities {
-	public static bool CheckMouseClick(RectTransform rect, Camera camera, int mouseButtonId = 0) {
-		return Input.GetMouseButtonDown (mouseButtonId) && RectTransformUtility.RectangleContainsScreenPoint (rect, Input.mousePosition, camera);
+	public static Vector2 mousePositionWorld {
+		get { return Camera.main.ScreenToWorldPoint (Input.mousePosition); }
+	}
+
+	public static bool CheckMouseClick(RectTransform rect, Camera camera, int mouseButtonId = 0, MousePhase phase = MousePhase.Began) {		
+		var isInPhase = false;
+		if (phase == MousePhase.Began) {
+			isInPhase = Input.GetMouseButtonDown (mouseButtonId);
+		} else if (phase == MousePhase.Ended) {
+			isInPhase = Input.GetMouseButtonUp (mouseButtonId);
+		} else if (phase == MousePhase.HoldDown) {
+			isInPhase = Input.GetMouseButton (mouseButtonId);
+		}
+		return isInPhase && RectTransformUtility.RectangleContainsScreenPoint (rect, Input.mousePosition, camera);	
 	}
 
 	public static bool CheckTouch(RectTransform rect, Camera camera, TouchPhase phase = TouchPhase.Began) {
