@@ -4,62 +4,42 @@ using System.Collections.Generic;
 
 public class AudioController : MonoBehaviour {
 
-	public float sleepTime = 2f;
-
-	void Start () {
-		StartCoroutine (PlayLoop());
+	public static void SendEvent(SourceElement sourceElement) {
+		Debug.Log ("AudioController.SendEvent");
+		Walkthrough (sourceElement);
 	}
 
-	IEnumerator PlayLoop() {
-		while (true) {
-			Debug.Log ("Tick AudioManager.PlayLoop");
-			var sourceElements = FindObjectsOfType<SourceElement> ();
-			foreach (var sourceElement in sourceElements) {
-				Walkthrough (sourceElement);
-			}
-			yield return new WaitForSeconds (sleepTime);
+	static void Walkthrough (ICanReceiveAudio target) {
+		var targetGameObject = target as MonoBehaviour;
+		var intermediaryElement = targetGameObject.GetComponent<IntermediaryElement> ();
+		var outputElement = targetGameObject.GetComponent<OutputElement> ();
+
+		if (intermediaryElement != null) {
+			Walkthrough (intermediaryElement);
+		} else if (outputElement != null) {
+			Walkthrough (outputElement);
+		} else {
+			throw new MissingComponentException ("Target should have a component IntermediaryElement or OutputElement");
 		}
 	}
 
-	void Walkthrough (SourceElement sourceElement) {
+	static void Walkthrough (SourceElement sourceElement) {
 		foreach (var target in sourceElement.targets) {
 			target.Feed (sourceElement.source.Spit ());
-
-			var targetGameObject = target as MonoBehaviour;
-			var intermediaryElement = targetGameObject.GetComponent<IntermediaryElement> ();
-			var outputElement = targetGameObject.GetComponent<OutputElement> ();
-
-			if (intermediaryElement != null) {
-				Walkthrough (intermediaryElement);
-			}
-
-			if (outputElement != null) {
-				Walkthrough (outputElement);
-			}
+			Walkthrough (target);
 		}
 	}
 
-	void Walkthrough (IntermediaryElement element) {
+	static void Walkthrough (IntermediaryElement element) {
 		foreach (var source in element.sources) {
 			foreach (var target in element.targets) {
 				target.Feed (source.Spit ());
-
-				var targetGameObject = target as MonoBehaviour;
-				var intermediaryElement = targetGameObject.GetComponent<IntermediaryElement> ();
-				var outputElement = targetGameObject.GetComponent<OutputElement> ();
-
-				if (intermediaryElement != null) {
-					Walkthrough (intermediaryElement);
-				}
-
-				if (outputElement != null) {
-					Walkthrough (outputElement);
-				}
+				Walkthrough (target);
 			}
 		}
 	}
 
-	void Walkthrough (OutputElement outputElement) {
+	static void Walkthrough (OutputElement outputElement) {
 		foreach (var source in outputElement.sources) {
 			outputElement.output.Feed (source.Spit ());
 		}

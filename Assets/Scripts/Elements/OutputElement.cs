@@ -6,7 +6,7 @@ public class OutputElement: MonoBehaviour {
 	public List<ICanSendAudio> sources;
 	public ICanReceiveAudio output;
 
-	void Start () {
+	void Awake () {
 		sources = new List<ICanSendAudio> ();
 	}
 }
