@@ -18,6 +18,7 @@ public class PadLoop : MonoBehaviour, ICanSendAudio {
 	public SpriteRenderer buttonStopSprite;
 	public Color buttonDisableColor;
 	public Color buttonDefaultColor;
+	public TextMesh loopSleepText;
 
 	SourceElement sourceElement;
 	Coroutine innerLoop;
@@ -39,6 +40,8 @@ public class PadLoop : MonoBehaviour, ICanSendAudio {
 			buttonPauseSprite.color = buttonDisableColor;
 			buttonStopSprite.color = buttonDisableColor;
 		}
+
+		loopSleepText.text = string.Format ("{0}s", sleepTime);
 	}
 
 	void Update() {
