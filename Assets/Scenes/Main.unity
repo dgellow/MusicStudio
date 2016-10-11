@@ -756,6 +756,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!212 &637042923 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212000012223061864, guid: 9f5b25d82df694d29abf2ab2bff64ba4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1687726406}
 --- !u!1 &665810799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,6 +1036,11 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+--- !u!212 &892831546 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212000014197823902, guid: 9f5b25d82df694d29abf2ab2bff64ba4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1687726406}
 --- !u!1001 &928261690
 Prefab:
   m_ObjectHideFlags: 0
@@ -1315,6 +1325,11 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
+--- !u!212 &1015620821 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212000011102550968, guid: 9f5b25d82df694d29abf2ab2bff64ba4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1687726406}
 --- !u!1 &1016316446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,6 +1501,11 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224000010434148872, guid: f064282cd0c104751bf8d0c10f3f9808,
     type: 2}
   m_PrefabInternal: {fileID: 928261690}
+--- !u!102 &1143256352 stripped
+TextMesh:
+  m_PrefabParentObject: {fileID: 102000012108010218, guid: 9f5b25d82df694d29abf2ab2bff64ba4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1687726406}
 --- !u!1 &1235329238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,7 +1930,28 @@ Prefab:
       propertyPath: targetObjects.Array.data[0]
       value: 
       objectReference: {fileID: 490237777}
-    m_RemovedComponents: []
+    - target: {fileID: 114000013643912426, guid: 9f5b25d82df694d29abf2ab2bff64ba4,
+        type: 2}
+      propertyPath: buttonPlaySprite
+      value: 
+      objectReference: {fileID: 1015620821}
+    - target: {fileID: 114000013643912426, guid: 9f5b25d82df694d29abf2ab2bff64ba4,
+        type: 2}
+      propertyPath: buttonPauseSprite
+      value: 
+      objectReference: {fileID: 637042923}
+    - target: {fileID: 114000013643912426, guid: 9f5b25d82df694d29abf2ab2bff64ba4,
+        type: 2}
+      propertyPath: buttonStopSprite
+      value: 
+      objectReference: {fileID: 892831546}
+    - target: {fileID: 114000013643912426, guid: 9f5b25d82df694d29abf2ab2bff64ba4,
+        type: 2}
+      propertyPath: loopSleepText
+      value: 
+      objectReference: {fileID: 1143256352}
+    m_RemovedComponents:
+    - {fileID: 95000012674439534, guid: 9f5b25d82df694d29abf2ab2bff64ba4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9f5b25d82df694d29abf2ab2bff64ba4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1736215377
@@ -2421,6 +2462,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 490237776}
     m_Modifications:
+    - target: {fileID: 114000012818505302, guid: 48932d2b699114e1abbf61b2464be30e,
+        type: 2}
+      propertyPath: targetObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012945972170, guid: 48932d2b699114e1abbf61b2464be30e, type: 2}
       propertyPath: m_LocalPosition.x
       value: -181

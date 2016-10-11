@@ -58,7 +58,6 @@ GameObject:
   - 58: {fileID: 58000012952541726}
   - 114: {fileID: 114000012818505302}
   - 114: {fileID: 114000013643912426}
-  - 95: {fileID: 95000012674439534}
   - 114: {fileID: 114000013276286190}
   m_Layer: 5
   m_Name: Pad Loop
@@ -184,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012371628858}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 125, y: 66, z: -10}
+  m_LocalPosition: {x: -181, y: 362, z: -10}
   m_LocalScale: {x: 150, y: 150, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -334,23 +333,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!95 &95000012674439534
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012371628858}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!102 &102000012108010218
 TextMesh:
   serializedVersion: 3
@@ -459,12 +441,12 @@ MonoBehaviour:
   sleepTime: 0.25
   sample: {fileID: 8300000, guid: c9c3929e7a1b043e48758b4e87407223, type: 3}
   loopState: 2
-  buttonPlaySprite: {fileID: 0}
-  buttonPauseSprite: {fileID: 0}
-  buttonStopSprite: {fileID: 0}
+  buttonPlaySprite: {fileID: 212000011102550968}
+  buttonPauseSprite: {fileID: 212000012223061864}
+  buttonStopSprite: {fileID: 212000014197823902}
   buttonDisableColor: {r: 0.3602941, g: 0.3602941, b: 0.3602941, a: 1}
   buttonDefaultColor: {r: 1, g: 1, b: 1, a: 1}
-  loopSleepText: {fileID: 0}
+  loopSleepText: {fileID: 102000012108010218}
 --- !u!114 &114000013948502090
 MonoBehaviour:
   m_ObjectHideFlags: 1
