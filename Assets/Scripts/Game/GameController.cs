@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour {
 	[SerializeField]
 	GeneratorDragPhase generatorDragPhase;
 
-	void Start () {
+	void Awake () {
 		if (gameState == null) {
 			gameState = this;
 			DontDestroyOnLoad (this);

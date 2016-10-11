@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class SourceElement: MonoBehaviour {
 	public ICanSendAudio source;
 	public List<ICanReceiveAudio> targets;
-	public List<GameObject> targetObjects;
+	public List<Element> targetElements;
 
 	void Awake() {
 		source = GetComponent<ICanSendAudio> ();
@@ -18,7 +18,7 @@ public class SourceElement: MonoBehaviour {
 
 	void LoadTargets() {
 		targets = new List<ICanReceiveAudio> ();
-		foreach (var tObject in targetObjects) {
+		foreach (var tObject in targetElements) {
 			if (tObject != null) {
 				var target = tObject.GetComponent<ICanReceiveAudio> ();
 				if (target != null) {
