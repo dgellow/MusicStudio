@@ -85,6 +85,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000013130309658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013312555820}
+  - 114: {fileID: 114000011859732802}
+  m_Layer: 5
+  m_Name: Joint Control
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000013675401050
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +111,8 @@ GameObject:
   - 4: {fileID: 4000011789601376}
   - 212: {fileID: 212000013310391904}
   - 58: {fileID: 58000012448369464}
+  - 114: {fileID: 114000014151916724}
+  - 114: {fileID: 114000010526896726}
   m_Layer: 5
   m_Name: Joint Anchor
   m_TagString: Untagged
@@ -132,7 +150,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012945972170}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!4 &4000011776676446
 Transform:
   m_ObjectHideFlags: 1
@@ -145,7 +163,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012945972170}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!4 &4000011789601376
 Transform:
   m_ObjectHideFlags: 1
@@ -166,15 +184,16 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012371628858}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -266, y: 396, z: -10}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalPosition: {x: 125, y: 66, z: -10}
+  m_LocalScale: {x: 150, y: 150, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000011789601376}
+  - {fileID: 4000013312555820}
+  - {fileID: 4000011776676446}
   - {fileID: 4000013967884158}
   - {fileID: 4000013301014006}
   - {fileID: 4000010242392006}
-  - {fileID: 4000011776676446}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000013301014006
@@ -189,7 +208,20 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012945972170}
-  m_RootOrder: 2
+  m_RootOrder: 4
+--- !u!4 &4000013312555820
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013130309658}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012945972170}
+  m_RootOrder: 1
 --- !u!4 &4000013967884158
 Transform:
   m_ObjectHideFlags: 1
@@ -202,7 +234,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012945972170}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!23 &23000013121607762
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -340,6 +372,17 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
+--- !u!114 &114000010526896726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013675401050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332e32edffd2b4c78a3f0c642b130963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011524547534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -354,7 +397,7 @@ MonoBehaviour:
   onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000013643912426}
+      - m_Target: {fileID: 0}
         m_MethodName: SetLoopStatePlay
         m_Mode: 1
         m_Arguments:
@@ -367,6 +410,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114000011859732802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013130309658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acdf6203b8d224972b78777c65176972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012818505302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -402,15 +456,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37cdeba5edc04d26a14d3ae146699ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sleepTime: 2
+  sleepTime: 0.25
   sample: {fileID: 8300000, guid: c9c3929e7a1b043e48758b4e87407223, type: 3}
   loopState: 2
-  buttonPlaySprite: {fileID: 212000011102550968}
-  buttonPauseSprite: {fileID: 212000012223061864}
-  buttonStopSprite: {fileID: 212000014197823902}
+  buttonPlaySprite: {fileID: 0}
+  buttonPauseSprite: {fileID: 0}
+  buttonStopSprite: {fileID: 0}
   buttonDisableColor: {r: 0.3602941, g: 0.3602941, b: 0.3602941, a: 1}
   buttonDefaultColor: {r: 1, g: 1, b: 1, a: 1}
-  loopSleepText: {fileID: 102000012108010218}
+  loopSleepText: {fileID: 0}
 --- !u!114 &114000013948502090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -425,7 +479,7 @@ MonoBehaviour:
   onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000013643912426}
+      - m_Target: {fileID: 0}
         m_MethodName: SetLoopStateStop
         m_Mode: 1
         m_Arguments:
@@ -438,6 +492,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114000014151916724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013675401050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0db23635d0cb4011a9112277a257115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfPoints: 20
+  prefabRelationShip: {fileID: 114000013161877070, guid: 4c58d243ccb8e47f09cc919bb794accf,
+    type: 2}
 --- !u!114 &114000014281038116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -452,7 +520,7 @@ MonoBehaviour:
   onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000013643912426}
+      - m_Target: {fileID: 0}
         m_MethodName: SetLoopStatePause
         m_Mode: 1
         m_Arguments:
