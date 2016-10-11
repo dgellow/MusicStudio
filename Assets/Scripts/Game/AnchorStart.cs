@@ -16,11 +16,15 @@ public class AnchorStart : MonoBehaviour {
 	}
 
 	void Update () {		
+		// Clear existing relationships
 		foreach (var child in GetComponentsInChildren<Relationship> ()) {
 			DestroyImmediate (child.gameObject);
-			Debug.Log ("destroy child");
 		}
+
+		// Initialize renderers array
 		lineRenderers = new LineRenderer[sourceElement.targetObjects.Count];
+
+		// Loop on targeted elements
 		for (var targetIndex = 0; targetIndex < sourceElement.targetObjects.Count; targetIndex++) {
 			var targetElement = sourceElement.targetObjects [targetIndex];
 			var targetAnchor = targetElement.GetComponentInChildren<AnchorEnd> ();
@@ -28,6 +32,7 @@ public class AnchorStart : MonoBehaviour {
 			lineRenderers [targetIndex] = Instantiate (prefabRelationShip).GetComponent<LineRenderer> ();
 			lineRenderers [targetIndex].transform.parent = transform;
 
+			// Setup control points
 			var points = new Transform[nbPoints];
 			points [0] = transform;
 			points [1] = transform;
@@ -38,31 +43,34 @@ public class AnchorStart : MonoBehaviour {
 
 			lineRenderers [targetIndex].SetVertexCount (numberOfPoints * (points.Length - 2));
 
+
+			// Bézier spline
+			// Based on https://en.wikibooks.org/wiki/Cg_Programming/Unity/B%C3%A9zier_Curves
 			Vector3 p0;
 			Vector3 p1;
 			Vector3 p2;
 
 			for (var j = 0; j < points.Length - 2; j++) {
-				// check control points
+				// Check control points
 				if (points[j] == null || points[j + 1] == null || points[j + 2] == null) {
 					return;  
 				}
 
-				// determine control points of segment
+				// Determine control points of segment
 				p0 = 0.5f * (points[j].transform.position 
 					+ points[j + 1].transform.position);
 				p1 = points[j + 1].transform.position;
 				p2 = 0.5f * (points[j + 1].transform.position 
 					+ points[j + 2].transform.position);
 
-				// set points of quadratic Bezier curve
+				// Set points of quadratic Bezier curve
 				Vector3 position;
 				float t;
 				var pointStep = 1f / numberOfPoints;
 
 				if (j == points.Length - 3) {
 					pointStep = 1f / (numberOfPoints - 1f);
-					// last point of last segment should reach p2
+					// Last point of last segment should reach p2
 				}  
 
 				for(var i = 0; i < numberOfPoints; i++) {
