@@ -46,12 +46,12 @@ public class AnchorStart : MonoBehaviour {
 
 			// Setup control points
 			var points = new Transform[nbPoints];
-			points [0] = transform;
+			points [0] = transform.parent.transform;
 			points [1] = transform;
 			points [2] = GetComponentInChildren<JointControl> ().transform;
 			points [3] = targetAnchor.GetComponentInChildren<JointControl> ().transform;				
 			points [4] = targetAnchor.transform;
-			points [5] = targetAnchor.transform;
+			points [5] = targetElement.transform;
 
 			lineRenderers [targetIndex].SetVertexCount (numberOfPoints * (points.Length - 2));
 			DrawBezier (points, lineRenderers[targetIndex]);

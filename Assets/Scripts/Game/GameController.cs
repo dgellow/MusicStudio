@@ -11,8 +11,14 @@ public enum GeneratorDragPhase {
 	Cancel
 }
 
-public class GameController : MonoBehaviour {
+[System.Serializable]
+public class Settings {
+	public float elementMenuTouchDuration = 1f;
+}
 
+[System.Serializable]
+public class GameController : MonoBehaviour {
+	public Settings settings;
 	public static GameController gameState;
 	public List<Board> boards;
 	public int currentBoard;
@@ -25,6 +31,8 @@ public class GameController : MonoBehaviour {
 		if (gameState == null) {
 			gameState = this;
 			DontDestroyOnLoad (this);
+
+			settings = new Settings ();
 		}
 	}
 

@@ -14,7 +14,7 @@ public class PadLoopButton : MonoBehaviour {
 	}
 		
 	void Update() {
-		if (Utilities.CheckTouch (collider, Camera.main)) {
+		if (Utilities.CheckTouch (collider)) {
 			onClick.Invoke ();
 		}
 	}

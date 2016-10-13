@@ -10,15 +10,13 @@ public class TabButton : MonoBehaviour {
 	public UnityEvent onClick;
 
 	RectTransform rect;
-	new Camera camera;
 
 	void Start() {
 		rect = GetComponent<RectTransform> ();
-		camera = FindObjectOfType<Camera> ();
 	}
 
 	void FixedUpdate() {
-		if (Utilities.CheckMouseClick (rect, camera) || Utilities.CheckTouch (rect, camera)) {
+		if (Utilities.CheckMouseClick (rect) || Utilities.CheckTouch (rect)) {
 			onClick.Invoke ();
 		}
 	}
