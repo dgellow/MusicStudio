@@ -56,7 +56,10 @@ public class PadLoop : MonoBehaviour, ICanSendAudio {
 	#region ICanSendAudio implementation
 
 	public GameObject Spit () {
-		return sample;
+		var spitObject = new GameObject ();
+		var audioSource = spitObject.AddComponent<AudioSource> ();
+		audioSource.clip = sample;
+		return spitObject;
 	}
 
 	#endregion

@@ -15,7 +15,6 @@ public class PadBeat : MonoBehaviour, ICanSendAudio {
 	public AudioClip sample;
 	public ICanReceiveAudio linkTarget;
 	public bool showMenu = false;
-	public GameObject spitContent;
 
 	ElementMenu menu;
 	SourceElement sourceElement;
@@ -71,13 +70,19 @@ public class PadBeat : MonoBehaviour, ICanSendAudio {
 			touchPhase = ElementTouchPhase.Began;
 		}
 	}
+
+	void OnMouseDown() {
+		AudioController.SendEvent (sourceElement);
+	}
 		
 	#region ICanSendAudio implementation
 
 	public GameObject Spit () {
-		var audioSource = spitContent.GetComponent<AudioSource> ();
+		Debug.Log ("Spit PadBeat");
+		var spitObject = new GameObject ();
+		var audioSource = spitObject.AddComponent<AudioSource> ();
 		audioSource.clip = sample;
-		return spitContent;
+		return spitObject;
 	}
 
 	#endregion

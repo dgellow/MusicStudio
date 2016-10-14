@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-
-
 public class AudioController : MonoBehaviour {
 	public static void SendEvent(SourceElement sourceElement) {
 		Debug.Log ("AudioController.SendEvent");
@@ -17,32 +15,22 @@ public class AudioController : MonoBehaviour {
 
 		if (intermediaryElement != null) {
 			Walkthrough (intermediaryElement);
-		} else if (outputElement != null) {
-			Walkthrough (outputElement);
 		} else {
-			throw new MissingComponentException ("Target should have a component IntermediaryElement or OutputElement");
+			throw new MissingComponentException ("Target should have a component IntermediaryElement");
 		}
 	}
 
 	static void Walkthrough (SourceElement sourceElement) {
-		foreach (var target in sourceElement.targets) {
+		foreach (var target in sourceElement.targets) {	
 			target.Feed (sourceElement.source.Spit ());
 			Walkthrough (target);
 		}
 	}
 
 	static void Walkthrough (IntermediaryElement element) {
-		foreach (var source in element.sources) {
-			foreach (var target in element.targets) {
-				target.Feed (source.Spit ());
-				Walkthrough (target);
-			}
-		}
-	}
-
-	static void Walkthrough (OutputElement outputElement) {
-		foreach (var source in outputElement.sources) {
-			outputElement.output.Feed (source.Spit ());
+		var sender = element.GetComponent<ICanSendAudio> ();
+		foreach (var target in element.targets) {
+			target.Feed (sender.Spit ());
 		}
 	}
 }

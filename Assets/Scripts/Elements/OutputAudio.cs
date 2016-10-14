@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(AudioSource))]
 public class OutputAudio : MonoBehaviour, ICanReceiveAudio {
 
 	public float volumeLevel = 1f;
@@ -9,6 +8,7 @@ public class OutputAudio : MonoBehaviour, ICanReceiveAudio {
 	#region ICanReceiveAudio implementation
 
 	public void Feed (GameObject inputObject) {
+		Debug.Log ("Feed OutputAudio");
 		var audioSource = inputObject.GetComponent<AudioSource> ();
 		audioSource.volume = volumeLevel;
 		audioSource.Play ();
