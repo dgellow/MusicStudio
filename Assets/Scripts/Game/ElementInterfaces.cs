@@ -12,9 +12,9 @@ public interface ILoopableElement {
 }
 
 public interface ICanSendAudio {
-	AudioClip Spit();
+	GameObject Spit();
 }
 
 public interface ICanReceiveAudio {
-	void Feed (AudioClip sample);
+	void Feed (GameObject sample);
 }

@@ -5,6 +5,9 @@ using System.Collections;
 public class DistortionFilter : MonoBehaviour, ICanSendAudio, ICanReceiveAudio {
 
 	public float distortionLevel;
+	public GameObject spitContent;
+
+	GameObject inputObject;
 
 	// Use this for initialization
 	void Start () {
@@ -18,16 +21,19 @@ public class DistortionFilter : MonoBehaviour, ICanSendAudio, ICanReceiveAudio {
 
 	#region ICanSendAudio implementation
 
-	public AudioClip Spit () {
-		throw new System.NotImplementedException ();
+	public GameObject Spit () {
+		inputObject.AddComponent<AudioDistortionFilter> ();
+		var outputDistortionFilter = inputObject.GetComponent<AudioDistortionFilter> ();
+		outputDistortionFilter.distortionLevel = distortionLevel;
+		return inputObject;
 	}
 
 	#endregion
 
 	#region ICanReceiveAudio implementation
 
-	public void Feed (AudioClip sample) {
-		throw new System.NotImplementedException ();
+	public void Feed (GameObject inputObject) {
+		this.inputObject = inputObject;
 	}
 
 	#endregion

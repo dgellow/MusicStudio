@@ -55,7 +55,7 @@ public class PadLoop : MonoBehaviour, ICanSendAudio {
 
 	#region ICanSendAudio implementation
 
-	public AudioClip Spit () {
+	public GameObject Spit () {
 		return sample;
 	}
 
