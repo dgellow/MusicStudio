@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class DistortionFilter : IntermediaryElement {
 
 	[Range(0, 1)]
-	public float distortionLevel;
+	public float distortionLevel = 0.5f;
 
 	GameObject spitObject;
 

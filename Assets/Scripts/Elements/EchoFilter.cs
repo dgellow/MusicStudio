@@ -6,11 +6,11 @@ public class EchoFilter : IntermediaryElement {
 	[Range(10, 5000)]
 	public float delay = 500f;
 	[Range(0, 1)]
-	public float decayRatio;
+	public float decayRatio = .5f;
 	[Range(0, 1)]
-	public float wetMix;
+	public float wetMix = .5f;
 	[Range(0, 1)]
-	public float dryMix;
+	public float dryMix = .2f;
 
 	GameObject spitObject;
 
