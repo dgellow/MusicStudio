@@ -29,7 +29,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000010307653122
 GameObject:
   m_ObjectHideFlags: 1
@@ -159,7 +159,6 @@ GameObject:
   - 114: {fileID: 114000010472866650}
   - 58: {fileID: 58000012952541726}
   - 114: {fileID: 114000012818505302}
-  - 114: {fileID: 114000014201847304}
   m_Layer: 5
   m_Name: Pad Beat
   m_TagString: Untagged
@@ -487,6 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e84328e33b8f45e195a5659aa1e33c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetElements: []
   sample: {fileID: 8300000, guid: 44eac334aeff142368068686935d2d99, type: 3}
   showMenu: 0
   touchPhase: 0
@@ -675,17 +675,6 @@ MonoBehaviour:
   numberOfPoints: 20
   prefabRelationShip: {fileID: 114000013161877070, guid: 4c58d243ccb8e47f09cc919bb794accf,
     type: 2}
---- !u!114 &114000014201847304
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012371628858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c87d0e6f187a41439d979892f878725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212000010150339968
 SpriteRenderer:
   m_ObjectHideFlags: 1
