@@ -1,30 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-[RequireComponent(typeof(IntermediaryElement))]
-public class DistortionFilter : MonoBehaviour, ICanSendAudio, ICanReceiveAudio {
+public class DistortionFilter : IntermediaryElement {
 
+	[Range(0, 1)]
 	public float distortionLevel;
 
 	GameObject spitObject;
 
-	#region ICanSendAudio implementation
-
-	public GameObject Spit () {
+	public override GameObject Spit () {
 		Debug.Log ("Spit DistortionFilter");
 		var outputDistortionFilter = spitObject.AddComponent<AudioDistortionFilter> ();
 		outputDistortionFilter.distortionLevel = distortionLevel;
 		return spitObject;
 	}
 
-	#endregion
-
-	#region ICanReceiveAudio implementation
-
-	public void Feed (GameObject inputObject) {
+	public override void Feed (GameObject inputObject) {
 		Debug.Log ("Feed DistortionFilter");
 		spitObject = inputObject;
 	}
-
-	#endregion
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum LoopState {
 	Play,
@@ -60,6 +61,10 @@ public class PadLoop : MonoBehaviour, ICanSendAudio {
 		var audioSource = spitObject.AddComponent<AudioSource> ();
 		audioSource.clip = sample;
 		return spitObject;
+	}
+
+	public List<ICanReceiveAudio> GetTargets() {
+		return sourceElement.targets;
 	}
 
 	#endregion

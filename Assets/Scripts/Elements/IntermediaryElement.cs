@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class IntermediaryElement: MonoBehaviour {
+public class IntermediaryElement: Element, ICanSendAudio, ICanReceiveAudio {
 	public List<ICanSendAudio> sources;
 	public List<ICanReceiveAudio> targets;
 	public List<Element> targetElements;
@@ -43,4 +43,24 @@ public class IntermediaryElement: MonoBehaviour {
 			}
 		}
 	}
+
+	#region ICanSendAudio implementation
+
+	public virtual GameObject Spit () {
+		throw new System.NotImplementedException ("Should be overriden in child class");
+	}
+
+	public virtual List<ICanReceiveAudio> GetTargets () {
+		return targets;
+	}
+
+	#endregion
+
+	#region ICanReceiveAudio implementation
+
+	public virtual void Feed (GameObject sample) {
+		throw new System.NotImplementedException ("Should be overriden in child class");
+	}
+
+	#endregion
 }

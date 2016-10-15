@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum ElementTouchPhase {
 	None,
@@ -10,7 +11,7 @@ public enum ElementTouchPhase {
 }
 
 [RequireComponent(typeof(SourceElement))]
-public class PadBeat : MonoBehaviour, ICanSendAudio {
+public class PadBeat : SourceElement, ICanSendAudio {
 
 	public AudioClip sample;
 	public ICanReceiveAudio linkTarget;
@@ -74,16 +75,12 @@ public class PadBeat : MonoBehaviour, ICanSendAudio {
 	void OnMouseDown() {
 		AudioController.SendEvent (sourceElement);
 	}
-		
-	#region ICanSendAudio implementation
 
-	public GameObject Spit () {
+	public override GameObject Spit () {
 		Debug.Log ("Spit PadBeat");
 		var spitObject = new GameObject ();
 		var audioSource = spitObject.AddComponent<AudioSource> ();
 		audioSource.clip = sample;
 		return spitObject;
 	}
-
-	#endregion
 }

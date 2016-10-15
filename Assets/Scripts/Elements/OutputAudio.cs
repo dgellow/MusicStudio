@@ -3,6 +3,7 @@ using System.Collections;
 
 public class OutputAudio : MonoBehaviour, ICanReceiveAudio {
 
+	[Range(0, 1)]
 	public float volumeLevel = 1f;
 
 	#region ICanReceiveAudio implementation

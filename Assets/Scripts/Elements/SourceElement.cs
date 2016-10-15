@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SourceElement: MonoBehaviour {
+public class SourceElement: Element, ICanSendAudio {
 	public ICanSendAudio source;
 	public List<ICanReceiveAudio> targets;
 	public List<Element> targetElements;
@@ -29,4 +29,16 @@ public class SourceElement: MonoBehaviour {
 			}
 		}
 	}
+
+	#region ICanSendAudio implementation
+
+	public virtual GameObject Spit () {
+		throw new System.NotImplementedException ("Should be overriden in child class");
+	}
+
+	public virtual List<ICanReceiveAudio> GetTargets () {
+		return targets;
+	}
+
+	#endregion
 }
