@@ -32,10 +32,26 @@ public class PadBeat : SourceElement {
 	}
 
 	void Update() {
-		menu.gameObject.SetActive (showMenu);
+		if (GameController.gameState.phase == GamePhase.LivePlay) {
+			LivePlayUpdate ();
+		} else if (GameController.gameState.phase == GamePhase.RelationshipSelection) {
+			RelationshipSelectionUpdate ();
+		}
 	}
 
 	void FixedUpdate() {
+		if (GameController.gameState.phase == GamePhase.LivePlay) {
+			LivePlayFixedUpdate ();
+		} else if (GameController.gameState.phase == GamePhase.RelationshipSelection) {
+			RelationshipSelectionFixedUpdate ();
+		}
+	}
+
+	void LivePlayUpdate() {
+		menu.gameObject.SetActive (showMenu);	
+	}
+
+	void LivePlayFixedUpdate() {
 		if (touchPhase == ElementTouchPhase.Began) {
 			touchDuration += Time.fixedDeltaTime;
 
@@ -71,8 +87,12 @@ public class PadBeat : SourceElement {
 		}
 	}
 
-	void OnMouseDown() {
-		AudioController.SendEvent (sourceElement);
+	void RelationshipSelectionUpdate() {
+		
+	}
+
+	void RelationshipSelectionFixedUpdate() {
+		
 	}
 
 	public override GameObject Spit () {

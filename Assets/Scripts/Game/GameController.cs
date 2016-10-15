@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public enum GeneratorDragPhase {
 	Begin,
@@ -11,9 +12,22 @@ public enum GeneratorDragPhase {
 	Cancel
 }
 
+public enum RelationshipSelectionPhase {
+	None,
+	Began,
+	Ended
+}
+
+public enum GamePhase {
+	LivePlay,
+	RelationshipSelection
+}
+
 [System.Serializable]
 public class Settings {
 	public float elementMenuTouchDuration = 1f;
+	public Color relationshipStartColor;
+	public Color relationshipEndColor;
 }
 
 [System.Serializable]
@@ -22,17 +36,18 @@ public class GameController : MonoBehaviour {
 	public static GameController gameState;
 	public List<Board> boards;
 	public int currentBoard;
+	public GamePhase phase;
 
 	GameObject generatorDragMarker;
 	[SerializeField]
 	GeneratorDragPhase generatorDragPhase;
 
+	RelationshipSelectionPhase relationshipSelectionPhase;
+
 	void Awake () {
 		if (gameState == null) {
 			gameState = this;
 			DontDestroyOnLoad (this);
-
-			settings = new Settings ();
 		}
 	}
 
@@ -89,5 +104,13 @@ public class GameController : MonoBehaviour {
 		Destroy (generatorDragMarker);
 		generatorDragMarker = null;
 		generatorDragPhase = GeneratorDragPhase.Cancel;
+	}
+
+	public void RelationshipSelectionBegin() {
+		phase = GamePhase.RelationshipSelection;
+	}
+
+	public void RelationshipselectionEnd() {
+		phase = GamePhase.LivePlay;
 	}
 }

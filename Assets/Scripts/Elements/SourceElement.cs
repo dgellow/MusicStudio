@@ -5,31 +5,43 @@ using System.Linq;
 
 public class SourceElement: Element, ICanSendAudio {
 	public ICanSendAudio source;
-	// public List<ICanReceiveAudio> targets;
 	public List<Element> targetElements;
+
+	SpriteRenderer renderer;
 
 	void Awake() {
 		source = GetComponent<ICanSendAudio> ();
-		// LoadTargets ();
+	}
+		
+	void Start() {
+		renderer = GetComponent<SpriteRenderer> ();
 	}
 
-//	void Update() {
-//		LoadTargets ();
-//	}
+	void Update() {
+		if (GameController.gameState.phase == GamePhase.LivePlay) {
+			LivePlayUpdate ();
+		} else if (GameController.gameState.phase == GamePhase.RelationshipSelection) {
+			RelationshipSelectionUpdate ();
+		}
+	}
 
-//	void LoadTargets() {
-//		targets = new List<ICanReceiveAudio> ();
-//		foreach (var tObject in targetElements) {
-//			if (tObject != null) {
-//				var target = tObject.GetComponent<ICanReceiveAudio> ();
-//				if (target != null) {
-//					targets.Add (target);
-//				} else {
-//					throw new MissingComponentException ("Target component doesn't implement the ICanReceiveAudio interface");
-//				}
-//			}
-//		}
-//	}
+	void LivePlayUpdate() {
+		renderer.material.color = new Color (
+			renderer.material.color.r, 
+			renderer.material.color.g,
+			renderer.material.color.b,
+			1f
+		);
+	}
+
+	void RelationshipSelectionUpdate() {
+		renderer.material.color = new Color (
+			renderer.material.color.r, 
+			renderer.material.color.g,
+			renderer.material.color.b,
+			.1f
+		);
+	}
 
 	#region ICanSendAudio implementation
 

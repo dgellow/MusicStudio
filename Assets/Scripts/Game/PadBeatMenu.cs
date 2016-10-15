@@ -35,6 +35,7 @@ public class PadBeatMenu : MonoBehaviour {
 
 	public void SelectEntryRelationships () {
 		Debug.Log ("Select menu entry \"PadBeat > Relationships\"");
+		GameController.gameState.RelationshipSelectionBegin ();
 	}
 
 	public void SelectEntryShape () {
