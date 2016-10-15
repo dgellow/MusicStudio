@@ -21,11 +21,13 @@ public class DebugCamera : MonoBehaviour {
 				foreach (var touch in Input.touches) {
 					var worldPosition = camera.ScreenToWorldPoint (new Vector3 (touch.position.x, touch.position.y));
 					if (touch.phase == TouchPhase.Began) {
-						touchMarkers [touch.fingerId] = Instantiate (touchMarker);
-						touchMarkers [touch.fingerId].transform.position = new Vector3 (worldPosition.x, worldPosition.y);
+						if (touchMarkers [touch.fingerId] == null) {
+							touchMarkers [touch.fingerId] = Instantiate (touchMarker);
+							touchMarkers [touch.fingerId].transform.position = new Vector3 (worldPosition.x, worldPosition.y, -9);
+						}
 					} else if (touch.phase == TouchPhase.Moved) {
-						touchMarkers [touch.fingerId].transform.position = new Vector3 (worldPosition.x, worldPosition.y);
-					} else if (touch.phase != TouchPhase.Stationary) {
+						touchMarkers [touch.fingerId].transform.position = new Vector3 (worldPosition.x, worldPosition.y, -9);
+					} else if (touch.phase == TouchPhase.Canceled || touch.phase == TouchPhase.Ended) {
 						Destroy (touchMarkers [touch.fingerId]);
 					}
 				}
