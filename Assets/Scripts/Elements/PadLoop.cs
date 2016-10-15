@@ -7,8 +7,7 @@ public enum LoopState {
 	Pause,
 	Stop
 }
-
-[RequireComponent(typeof(SourceElement))]
+	
 public class PadLoop : SourceElement {
 
 	public float sleepTime = 2f;
@@ -24,7 +23,7 @@ public class PadLoop : SourceElement {
 	SourceElement sourceElement;
 	Coroutine innerLoop;
 
-	void Start () {
+	void Awake () {
 		sourceElement = GetComponent<SourceElement> ();
 	}
 

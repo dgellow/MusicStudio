@@ -9,9 +9,8 @@ public enum ElementTouchPhase {
 	LongPressed,
 	Canceled
 }
-
-[RequireComponent(typeof(SourceElement))]
-public class PadBeat : SourceElement, ICanSendAudio {
+	
+public class PadBeat : SourceElement {
 
 	public AudioClip sample;
 	public ICanReceiveAudio linkTarget;
