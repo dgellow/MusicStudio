@@ -9,7 +9,7 @@ public enum LoopState {
 }
 
 [RequireComponent(typeof(SourceElement))]
-public class PadLoop : MonoBehaviour, ICanSendAudio {
+public class PadLoop : SourceElement {
 
 	public float sleepTime = 2f;
 	public AudioClip sample;
@@ -56,15 +56,11 @@ public class PadLoop : MonoBehaviour, ICanSendAudio {
 
 	#region ICanSendAudio implementation
 
-	public GameObject Spit () {
+	public override GameObject Spit () {
 		var spitObject = new GameObject ();
 		var audioSource = spitObject.AddComponent<AudioSource> ();
 		audioSource.clip = sample;
 		return spitObject;
-	}
-
-	public List<ICanReceiveAudio> GetTargets() {
-		return sourceElement.targets;
 	}
 
 	#endregion

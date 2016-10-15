@@ -3,23 +3,45 @@ using System.Collections;
 
 public class PadBeatMenu : MonoBehaviour {
 
-	public void SelectEntrySample() {
+	public Collider2D colliderEntryRecord;
+	PadBeat padBeat;
+
+	void Start () {
+		padBeat = GetComponentInParent<PadBeat> ();
+	}
+
+	public void SelectEntrySample () {
 		Debug.Log ("Select menu entry \"PadBeat > Sample\"");
 	}
 
-	public void SelectEntryRecord() {
+	public void SelectEntryRecord () {
 		Debug.Log ("Select menu entry \"PadBeat > Record\"");
+		StartCoroutine (RecordMicrophone ());
 	}
 
-	public void SelectEntryRelationships() {
+	IEnumerator RecordMicrophone () {
+		Debug.Log ("Start recording");
+		var clip = Microphone.Start (null, false, 10, 44100);
+		while (Microphone.IsRecording (null) &&
+		       (Utilities.CheckTouch (colliderEntryRecord, TouchPhase.Began) ||
+		       Utilities.CheckTouch (colliderEntryRecord, TouchPhase.Moved) ||
+		       Utilities.CheckTouch (colliderEntryRecord, TouchPhase.Stationary))) {
+			yield return new WaitForEndOfFrame ();
+		}
+		Debug.Log ("Stop recording");
+		Microphone.End (null);
+		padBeat.sample = clip;
+	}
+
+	public void SelectEntryRelationships () {
 		Debug.Log ("Select menu entry \"PadBeat > Relationships\"");
 	}
 
-	public void SelectEntryShape() {
+	public void SelectEntryShape () {
 		Debug.Log ("Select menu entry \"PadBeat > Shape\"");
 	}
 
-	public void SelectEntryMove() {
+	public void SelectEntryMove () {
 		Debug.Log ("Select menu entry \"PadBeat > Move\"");
 	}
 }
